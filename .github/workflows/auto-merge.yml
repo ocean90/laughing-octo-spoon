@@ -12,6 +12,7 @@ jobs:
     steps:
       - uses: actions/github-script@v3
         with:
+          debug: true
           script: |
             const mutation = `mutation($pullRequestId:ID!) {
                 enablePullRequestAutoMerge(input: {pullRequestId: $pullRequestId, mergeMethod: SQUASH}) {
