@@ -1,0 +1,24 @@
+name: Auto Merge
+
+on:
+  pull_request:
+
+jobs:
+
+  auto-merge:
+    name: Auto Merge
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/github-script@v3
+        with:
+          script: |
+            const mutation = `mutation($pullRequestId:ID!) {
+              enablePullRequestAutoMerge(input: {pullRequestId: $pullRequestId, mergeMethod: SQUASH})
+            }`;
+
+            const variables = {
+              pullRequestId: context.event.pull_request.node_id,
+            }
+            const result = await github.graphql(mutation, variables)
+            console.log(result)
