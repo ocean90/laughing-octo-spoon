@@ -18,7 +18,7 @@ jobs:
             }`;
 
             const variables = {
-              pullRequestId: context.event.pull_request.node_id,
+              pullRequestId: context.payload.pull_request.node_id,
             }
             const result = await github.graphql(mutation, variables)
             console.log(result)
