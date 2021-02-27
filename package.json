@@ -9,6 +9,6 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@wearerequired/eslint-config": "^1.0"
+    "@wearerequired/eslint-config": "^2.0"
   }
 }
