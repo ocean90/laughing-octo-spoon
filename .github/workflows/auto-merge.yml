@@ -12,6 +12,8 @@ jobs:
     steps:
       - uses: actions/github-script@v3
         with:
+          github-token: ${{secrets.SCRIPT_TOKEN}}
+          debug: true
           script: |
             const mutation = `mutation($pullRequestId:ID!) {
                 enablePullRequestAutoMerge(input: {pullRequestId: $pullRequestId, mergeMethod: SQUASH}) {
@@ -27,4 +29,5 @@ jobs:
               pullRequestId: context.payload.pull_request.node_id,
             }
             const result = await github.graphql(mutation, variables)
-            console.log(result)
+            console.log(result.enablePullRequestAutoMerge.actor)
+            console.log(result.enablePullRequestAutoMerge.pullRequest)

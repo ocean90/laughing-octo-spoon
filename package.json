@@ -10,6 +10,6 @@
   "license": "MIT",
   "devDependencies": {},
   "dependencies": {
-    "rimraf": "^2.7.1"
+    "rimraf": "^3.0.2"
   }
 }
