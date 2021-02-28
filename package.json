@@ -10,6 +10,7 @@
   "license": "MIT",
   "devDependencies": {},
   "dependencies": {
+    "lodash": "^4.17.20",
     "rimraf": "^3.0.2"
   }
 }

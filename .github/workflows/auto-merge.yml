@@ -29,5 +29,4 @@ jobs:
               pullRequestId: context.payload.pull_request.node_id,
             }
             const result = await github.graphql(mutation, variables)
-            console.log(result.enablePullRequestAutoMerge.actor)
-            console.log(result.enablePullRequestAutoMerge.pullRequest)
+            console.log(result)
