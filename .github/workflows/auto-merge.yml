@@ -8,10 +8,12 @@ jobs:
   auto-merge:
     name: Auto Merge
     runs-on: ubuntu-latest
+    environment: testing
 
     steps:
       - uses: actions/github-script@v3
         with:
+          github-token: ${{secrets.SCRIPT_TOKEN}}
           debug: true
           script: |
             const mutation = `mutation($pullRequestId:ID!) {
