@@ -10,23 +10,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/github-script@v3
-        with:
-          github-token: ${{secrets.SCRIPT_TOKEN}}
-          debug: true
-          script: |
-            const mutation = `mutation($pullRequestId:ID!) {
-                enablePullRequestAutoMerge(input: {pullRequestId: $pullRequestId, mergeMethod: SQUASH}) {
-                  pullRequest {
-                    autoMergeRequest {
-                      enabledAt
-                    }
-                  }
-                }
-            }`;
+      - uses: ocean90/gh-action-auto-merge-dependency-updates@feature/auto-merge
 
-            const variables = {
-              pullRequestId: context.payload.pull_request.node_id,
-            }
-            const result = await github.graphql(mutation, variables)
-            console.log(result)
+      # - uses: actions/github-script@v3
+      #   with:
+      #     github-token: ${{secrets.SCRIPT_TOKEN}}
+      #     debug: true
+      #     script: |
+      #       const mutation = `mutation($pullRequestId:ID!) {
+      #           enablePullRequestAutoMerge(input: {pullRequestId: $pullRequestId, mergeMethod: SQUASH}) {
+      #             pullRequest {
+      #               autoMergeRequest {
+      #                 enabledAt
+      #               }
+      #             }
+      #           }
+      #       }`;
+
+      #       const variables = {
+      #         pullRequestId: context.payload.pull_request.node_id,
+      #       }
+      #       const result = await github.graphql(mutation, variables)
+      #       console.log(result)
