@@ -11,6 +11,8 @@ jobs:
 
     steps:
       - uses: ocean90/gh-action-auto-merge-dependency-updates@feature/auto-merge
+        with:
+          allowed-update-types: 'devDependencies:minor, devDependencies:patch, dependencies:minor, dependencies:patch'
 
       # - uses: actions/github-script@v3
       #   with:
