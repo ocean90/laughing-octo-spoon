@@ -14,24 +14,3 @@ jobs:
         with:
           github-token: ${{secrets.SCRIPT_TOKEN}}
           allowed-update-types: 'devDependencies:minor, devDependencies:patch, dependencies:minor, dependencies:patch'
-
-      # - uses: actions/github-script@v3
-      #   with:
-      #     github-token: ${{secrets.SCRIPT_TOKEN}}
-      #     debug: true
-      #     script: |
-      #       const mutation = `mutation($pullRequestId:ID!) {
-      #           enablePullRequestAutoMerge(input: {pullRequestId: $pullRequestId, mergeMethod: SQUASH}) {
-      #             pullRequest {
-      #               autoMergeRequest {
-      #                 enabledAt
-      #               }
-      #             }
-      #           }
-      #       }`;
-
-      #       const variables = {
-      #         pullRequestId: context.payload.pull_request.node_id,
-      #       }
-      #       const result = await github.graphql(mutation, variables)
-      #       console.log(result)
